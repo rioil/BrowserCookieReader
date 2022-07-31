@@ -4,7 +4,7 @@ namespace BrowserCookieReader.Firefox
 {
     public sealed class FirefoxCookieReader : IBrowserCookieReader
     {
-        private FirefoxCookiesContext _context;
+        private readonly FirefoxCookiesContext _context;
 
         public FirefoxCookieReader()
         {
