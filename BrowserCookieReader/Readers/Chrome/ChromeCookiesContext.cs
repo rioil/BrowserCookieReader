@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BrowserCookieReader.Chrome
+namespace BrowserCookieReader.Readers.Chrome
 {
     internal class ChromeCookiesContext : DbContext
     {
@@ -34,11 +29,11 @@ namespace BrowserCookieReader.Chrome
                 entity.HasIndex(e => new { e.Host, e.TopFrameSiteKey, e.Name, e.Path }, "cookies_unique_index")
                     .IsUnique();
 
-                entity.Property(e => e.CreationTime).HasColumnName("creation_utc");
+                entity.Property(e => e.CreationUtc).HasColumnName("creation_utc");
 
                 entity.Property(e => e.EncryptedValue).HasColumnName("encrypted_value");
 
-                entity.Property(e => e.Expiry).HasColumnName("expires_utc");
+                entity.Property(e => e.ExpiresUtc).HasColumnName("expires_utc");
 
                 entity.Property(e => e.HasExpires).HasColumnName("has_expires");
 
@@ -52,7 +47,7 @@ namespace BrowserCookieReader.Chrome
 
                 entity.Property(e => e.IsSecure).HasColumnName("is_secure");
 
-                entity.Property(e => e.LastAccessed).HasColumnName("last_access_utc");
+                entity.Property(e => e.LastAccessUtc).HasColumnName("last_access_utc");
 
                 entity.Property(e => e.LastUpdateUtc).HasColumnName("last_update_utc");
 

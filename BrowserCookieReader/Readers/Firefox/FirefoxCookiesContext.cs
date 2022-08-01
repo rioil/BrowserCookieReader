@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace BrowserCookieReader.Firefox
+namespace BrowserCookieReader.Readers.Firefox
 {
     internal class FirefoxCookiesContext : DbContext
     {
@@ -31,7 +31,7 @@ namespace BrowserCookieReader.Firefox
                     .ValueGeneratedNever()
                     .HasColumnName("id");
 
-                entity.Property(e => e.CreationTime).HasColumnName("creationTime");
+                entity.Property(e => e.RawCreationTime).HasColumnName("creationTime");
 
                 entity.Property(e => e.Expiry).HasColumnName("expiry");
 
@@ -45,7 +45,7 @@ namespace BrowserCookieReader.Firefox
 
                 entity.Property(e => e.IsSecure).HasColumnName("isSecure");
 
-                entity.Property(e => e.LastAccessed).HasColumnName("lastAccessed");
+                entity.Property(e => e.RawLastAccessed).HasColumnName("lastAccessed");
 
                 entity.Property(e => e.Name).HasColumnName("name");
 
