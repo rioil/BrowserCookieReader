@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<Copyright>Copyright (c) rioil 2022</Copyright>
 		<Authors>rioil</Authors>
-		<Version>1.0.0-beta</Version>
+		<Version>1.0.0-beta2</Version>
 		<PackageProjectUrl></PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/rioil/BrowserCookieReader</RepositoryUrl>
