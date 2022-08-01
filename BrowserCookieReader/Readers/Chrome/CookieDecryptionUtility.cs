@@ -51,11 +51,11 @@ namespace BrowserCookieReader.Readers.Chrome
         {
             if (valueBytes.AsSpan(0, 3).SequenceEqual(AesHeadBytes))
             {
-                return EEncryptionType.DPAPI;
+                return EEncryptionType.AES;
             }
             else if (valueBytes.AsSpan(0, 4).SequenceEqual(DpapiHeadBytes))
             {
-                return EEncryptionType.AES;
+                return EEncryptionType.DPAPI;
             }
             else
             {
