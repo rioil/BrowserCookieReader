@@ -64,8 +64,6 @@ namespace BrowserCookieReader.Readers.Chrome
                 entity.Property(e => e.SourceScheme).HasColumnName("source_scheme");
 
                 entity.Property(e => e.TopFrameSiteKey).HasColumnName("top_frame_site_key");
-
-                entity.Property(e => e.Value).HasColumnName("value");
             });
         }
 

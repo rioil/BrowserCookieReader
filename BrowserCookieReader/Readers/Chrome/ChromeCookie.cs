@@ -7,8 +7,7 @@ namespace BrowserCookieReader.Readers.Chrome
     public class ChromeCookie : ICookie
     {
         public string Name { get; }
-        public string Value => _value ?? DecryptedValue;
-        private string _value;
+        public string Value => DecryptedValue;
         public string Host { get; }
         public string Path { get; } = null!;
         public DateTimeOffset Expires => ConvertToDateTimeOffset(ExpiresUtc);
