@@ -28,7 +28,7 @@ namespace BrowserCookieReader.Readers.Chrome
 
         private static string DecryptWithAES(byte[] valueBytes)
         {
-            var nonce = valueBytes.AsSpan(4, 12);
+            var nonce = valueBytes.AsSpan(3, 12);
 
             using var localStateFile = File.OpenRead(LocalStateFilePath);
             var localState = JsonSerializer.Deserialize<LocalState>(localStateFile);
