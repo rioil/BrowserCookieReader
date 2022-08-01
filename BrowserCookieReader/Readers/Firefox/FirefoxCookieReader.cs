@@ -1,6 +1,6 @@
 ﻿using BrowserCookieReader.Exceptions;
-using BrowserCookieReader.Readers;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 
 namespace BrowserCookieReader.Readers.Firefox
 {
@@ -46,6 +46,45 @@ namespace BrowserCookieReader.Readers.Firefox
             }
 
             value = validCookie.Value;
+            return true;
+        }
+
+        public Cookie Read(string name, string host, string path = "/")
+        {
+            var cookie = _context.Cookies.FirstOrDefault(c => c.Name == name && c.Host == host && c.Path == path);
+            if (cookie is null) { throw new CookieNotFoundException(); }
+
+            return new Cookie()
+            {
+                Name = cookie.Name,
+                Value = cookie.Value,
+                Path = cookie.Path,
+                Domain = cookie.Host,
+                Expires = cookie.Expires.LocalDateTime,
+                HttpOnly = cookie.IsHttpOnly,
+                Secure = cookie.IsSecure,
+            };
+        }
+
+        public bool TryRead([NotNullWhen(true)] out Cookie? value, string name, string host, string path = "/")
+        {
+            var cookie = _context.Cookies.FirstOrDefault(c => c.Name == name && c.Host == host && c.Path == path);
+            if (cookie is null)
+            {
+                value = null;
+                return false;
+            }
+
+            value = new Cookie()
+            {
+                Name = cookie.Name,
+                Value = cookie.Value,
+                Path = cookie.Path,
+                Domain = cookie.Host,
+                Expires = cookie.Expires.LocalDateTime,
+                HttpOnly = cookie.IsHttpOnly,
+                Secure = cookie.IsSecure,
+            };
             return true;
         }
     }
